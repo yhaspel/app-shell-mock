@@ -8,16 +8,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideHttpClient(),
-    provideRouter(routes),   
-    // provideTransloco({
-    //   config: {
-    //     defaultLang: 'en',
-    //     // Remove this option if your application doesn't support changing language in runtime.
-    //     reRenderOnLangChange: true,
-    //     prodMode: !isDevMode(),
-    //     availableLangs: LANGUAGE_MAP(),
-    //   },
-    //   loader: TranslocoHttpLoader,
-    // }), 
+    provideRouter(routes)
   ],
 };

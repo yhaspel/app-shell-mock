@@ -14,7 +14,6 @@ export const routes: Routes = [
         remoteEntry: 'http://localhost:3400/remoteEntry.js',
         exposedModule: './Routes'
     }).then((m) => m.ITERO_AOHS_ROUTES),
-    providers: []
   },
   {
     path: 'test-mife',
