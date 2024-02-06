@@ -1,0 +1,10 @@
+[
+    {
+        "appId": "itero-aohs",
+        "remoteUrl": "http://localhost:3400/remoteEntry.js"
+    },
+    {
+        "appId": "test-mife",
+        "remoteUrl": "http://localhost:5200/remoteEntry.js"
+    }
+]

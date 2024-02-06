@@ -1,31 +1,53 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Routes } from '@angular/router';
+import { CanActivateMfeService } from './guards/can-activate-mfe.service';
+import { RemoteMfeService } from './services/remote-mfe.service';
+
+const loadRemoteModuleWrapper = async ({
+  appId,
+  exposedModule,
+}: {
+  appId: string;
+  exposedModule: string;
+}) => {
+  const mfeRemoteEntry = (await RemoteMfeService.fetchRemoteMfeMetaData()).find(
+    (remoteMfeData) => remoteMfeData.appId === appId
+  );
+  const remoteEntryUrl = mfeRemoteEntry?.remoteUrl || '';
+
+  return loadRemoteModule({
+    type: 'module',
+    remoteEntry: remoteEntryUrl,
+    exposedModule: exposedModule,
+  });
+};
 
 export const routes: Routes = [
   {
     path: 'itero-aohs',
-    loadComponent: () => loadRemoteModule({
-        type: 'module',
-        remoteEntry: 'http://localhost:3400/remoteEntry.js',
-        exposedModule: './Component'
-    }).then((m) => m.AppComponent),
-    loadChildren: () => loadRemoteModule({
-        type: 'module',
-        remoteEntry: 'http://localhost:3400/remoteEntry.js',
-        exposedModule: './Routes'
-    }).then((m) => m.ITERO_AOHS_ROUTES),
+    loadComponent: () =>
+      loadRemoteModuleWrapper({
+        appId: 'itero-aohs',
+        exposedModule: './Component',
+      }).then((m) => m.AppComponent),
+    loadChildren: () =>
+      loadRemoteModuleWrapper({
+        appId: 'itero-aohs',
+        exposedModule: './Routes',
+      }).then((m) => m.ITERO_AOHS_ROUTES),
+    canActivate: [CanActivateMfeService],
   },
   {
     path: 'test-mife',
-    loadComponent: () => loadRemoteModule({
-        type: 'module',
-        remoteEntry: 'http://localhost:5200/remoteEntry.js',
-        exposedModule: './Component'
-    }).then((m) => m.AppComponent),
-    loadChildren: () => loadRemoteModule({
-        type: 'module',
-        remoteEntry: 'http://localhost:5200/remoteEntry.js',
-        exposedModule: './Routes'
-    }).then((m) => m.TEST_MIFE_ROUTES)
+    loadComponent: () =>
+      loadRemoteModuleWrapper({
+        appId: 'test-mife',
+        exposedModule: './Component',
+      }).then((m) => m.AppComponent),
+    loadChildren: () =>
+      loadRemoteModuleWrapper({
+        appId: 'test-mife',
+        exposedModule: './Routes',
+      }).then((m) => m.TEST_MIFE_ROUTES),
   },
 ];
