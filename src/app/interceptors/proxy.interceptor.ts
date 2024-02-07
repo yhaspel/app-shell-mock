@@ -10,9 +10,7 @@ import { ProxyMapService } from '../services/proxy-map.service';
 
 @Injectable()
 export class ProxyInterceptor implements HttpInterceptor {
-  constructor(private proxyMapService: ProxyMapService) {
-    // this.proxyMapService.fetchProxyMap().subscribe((res) => console.warn('res', res));
-  }
+  constructor(private proxyMapService: ProxyMapService) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -50,28 +48,4 @@ export class ProxyInterceptor implements HttpInterceptor {
     // Else, pass through other requests
     return next.handle(req);
   }
-
-  // intercept(
-  //   req: HttpRequest<any>,
-  //   next: HttpHandler
-  // ): Observable<HttpEvent<any>> {
-  //   let targetUrl = '';
-  //   for (const prefix in proxyMap) {
-  //     if (req.url.startsWith(prefix)) {
-  //       targetUrl = proxyMap[prefix];
-  //       break;
-  //     }
-  //   }
-
-  //   const reqURL = req.url;
-  //   // If a target URL is found, proxy the request
-  //   if (targetUrl) {
-  //     const proxiedReq = req.clone({
-  //       url: targetUrl + '/' + reqURL,
-  //     });
-  //     return next.handle(proxiedReq);
-  //   }
-  //   // Else, pass through other requests
-  //   return next.handle(req);
-  // }
 }
