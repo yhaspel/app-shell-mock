@@ -8,11 +8,14 @@ import {
 } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ProxyInterceptor } from './interceptors/proxy.interceptor';
+import { provideAuthAngularInterceptor, provideAuthAngularServices } from '@itero/auth-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideHttpClient(withInterceptorsFromDi()),
+    provideAuthAngularServices,
+		provideAuthAngularInterceptor,
     { provide: HTTP_INTERCEPTORS, useClass: ProxyInterceptor, multi: true },
     provideRouter(routes),
   ],
