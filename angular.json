@@ -71,7 +71,8 @@
 					"options": {
 						"port": 2200,
 						"publicHost": "http://localhost:2200",
-						"extraWebpackConfig": "webpack.config.js"
+						"extraWebpackConfig": "webpack.config.js",
+						"proxyConfig": "src/proxy.conf.json"
 					}
 				},
 				"extract-i18n": {

@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     provideAuthAngularServices,
 		provideAuthAngularInterceptor,
-    { provide: HTTP_INTERCEPTORS, useClass: ProxyInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ProxyInterceptor, multi: true }, // using proxy.conf.json instead. see angular.json for usage
     provideRouter(routes),
   ],
 };
