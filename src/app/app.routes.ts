@@ -1,6 +1,5 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Routes } from '@angular/router';
-import { CanActivateMfeService } from './guards/can-activate-mfe.service';
 import { RemoteMfeService } from './services/remote-mfe.service';
 
 const loadRemoteModuleWrapper = async ({
@@ -35,7 +34,6 @@ export const routes: Routes = [
         appId: 'itero-aohs',
         exposedModule: './Routes',
       }).then((m) => m.ITERO_AOHS_ROUTES),
-    canActivate: [CanActivateMfeService],
   },
   {
     path: 'test-mife',
