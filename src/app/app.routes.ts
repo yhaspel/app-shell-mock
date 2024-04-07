@@ -13,7 +13,6 @@ const loadRemoteModuleWrapper = async ({
     (remoteMfeData) => remoteMfeData.appId === appId
   );
   const remoteEntryUrl = mfeRemoteEntry?.remoteUrl || '';
-
   return loadRemoteModule({
     type: 'module',
     remoteEntry: remoteEntryUrl,

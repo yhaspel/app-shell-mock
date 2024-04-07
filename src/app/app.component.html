@@ -1,2 +1,19 @@
 <h1>APP SHELL MOCK</h1>
-<router-outlet></router-outlet>
+<div class="mock-shell-header" [style.--headerHeight]="appShellHeaderHeight + 'px'">
+  <div>Mock Shell Header</div>
+  <div>
+    <a
+      [routerLink]="['/itero-aohs']"
+      [queryParams]="{
+        debug: false,
+        staticFilesEndpoint: staticFilesEndpoint$ | async
+      }"
+    >
+      AOHS
+    </a>
+  </div>
+  <div><a [routerLink]="['/test-mife']"> Test MFE </a></div>
+</div>
+<div class="router-container" [style.--headerHeight]="appShellHeaderHeight + 'px'">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,21 @@
+h1 {
+    position: absolute;
+    bottom: 2px;
+    left: 12px;
+}
+
+.mock-shell-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: var(--headerHeight);
+    font-size: 25px;
+    > div {
+        margin-right: 2%;
+    }
+}
+
+.router-container {
+    height: calc(100vh - var(--headerHeight));
+}
