@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, take, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +10,13 @@ import { Observable, of } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'app-shell';
   appShellHeaderHeight = 64;
-  
-  staticFilesEndpoint$!: Observable<string>;
-  
-  ngOnInit(): void {
-    // mocking the static files endpoint coming from async service
-    this.staticFilesEndpoint$ = of('http://localhost:3400');
-  }
+
+  // can also consider mocking this from an async service
+  staticFilesEndpoints = {
+    'itero-aohs': of('http://localhost:3400'),
+    'test-mife': of('http://localhost:5200'),
+  };
 }
