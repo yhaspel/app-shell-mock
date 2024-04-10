@@ -13,10 +13,4 @@ import { Observable, of, take, tap } from 'rxjs';
 export class AppComponent {
   title = 'app-shell';
   appShellHeaderHeight = 64;
-
-  // can also consider mocking this from an async service
-  staticFilesEndpoints = {
-    'itero-aohs': of('http://localhost:3400'),
-    'test-mife': of('http://localhost:5200'),
-  };
 }

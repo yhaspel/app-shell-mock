@@ -1,6 +1,7 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Routes } from '@angular/router';
 import { RemoteMfeService } from './services/remote-mfe.service';
+import { aohsDataResolver } from './services/aohs-data.resolver';
 
 const loadRemoteModuleWrapper = async ({
   appId,
@@ -33,6 +34,7 @@ export const routes: Routes = [
         appId: 'itero-aohs',
         exposedModule: './Routes',
       }).then((m) => m.ITERO_AOHS_ROUTES),
+    resolve: { data: aohsDataResolver },
   },
   {
     path: 'test-mife',

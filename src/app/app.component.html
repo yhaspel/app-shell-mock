@@ -5,16 +5,14 @@
     <a
       [routerLink]="['/itero-aohs']"
       [queryParams]="{
-        debug: false,
-        staticFilesEndpoint: staticFilesEndpoints['itero-aohs'] | async
+        debug: false
       }"
     >
       AOHS
     </a>
   </div>
   <div><a [routerLink]="['/test-mife']" [queryParams]="{
-    debug: false,
-    staticFilesEndpoint: staticFilesEndpoints['test-mife'] | async
+    debug: false
   }"> Test MFE </a></div>
 </div>
 <div class="router-container" [style.--headerHeight]="appShellHeaderHeight + 'px'">
